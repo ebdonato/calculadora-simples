@@ -4,13 +4,29 @@
             <q-icon color="primary" :name="iconName" />
         </q-item-section>
 
-        <q-item-section align="right">{{ value }}</q-item-section>
+        <q-item-section>
+            <q-btn
+                flat
+                color="primary"
+                :label="value"
+                @click="copyData"
+                class="full-width"
+                align="right"
+            />
+        </q-item-section>
     </q-item>
 </template>
 
 <script>
+import { copyToClipboard } from "quasar";
+
 export default {
     name: "display",
-    props: ["value", "iconName"]
+    props: ["value", "iconName"],
+    methods: {
+        copyData() {
+            copyToClipboard(this.value);
+        }
+    }
 };
 </script>
