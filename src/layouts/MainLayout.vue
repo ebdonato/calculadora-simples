@@ -66,27 +66,28 @@
                 <q-space />
 
                 <q-item
-                    clickable
-                    tag="a"
-                    target="_blank"
+                    type="a"
                     href="https://icon54.com/"
+                    target="_blank"
+                    clickable
                     style="align-items: center;"
-                    class="q-mr-none q-pr-none"
+                    class="q-pr-none"
                 >
-                    Icons made by Pixel perfect
+                    Icons made by Pixel Perfect
                 </q-item>
                 <q-item
-                    clickable
-                    tag="a"
-                    target="_blank"
+                    type="a"
                     href="https://www.flaticon.com/"
+                    target="_blank"
+                    clickable
                     style="align-items: center;"
-                    class="q-ml-none q-pl-xs"
+                    class="q-pl-xs"
                 >
                     from www.flaticon.com
                 </q-item>
-
-                <div class="q-ma-sm">&copy; {{ new Date().getFullYear() }}</div>
+                <q-item style="align-items: center;">
+                    &copy; {{ new Date().getFullYear() }}
+                </q-item>
             </q-toolbar>
         </q-footer>
 
@@ -149,7 +150,7 @@ export default {
             leftDrawerOpen: false,
             essentialLinks: linksData,
             options: Object.keys(options),
-            themeChoice: localStorage.getItem("themeMode")
+            themeChoice: localStorage.getItem("themeMode") || "Auto"
         };
     },
     methods: {

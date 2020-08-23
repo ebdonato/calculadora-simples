@@ -1,6 +1,6 @@
 <template>
-    <q-page>
-        <div class="q-pa-xl">
+    <q-page class="flex flex-center q-ma-none">
+        <div class="q-pa-xl q-ma-none">
             <!-- Linhas do Display -->
 
             <Display :value="'teste'" iconName="looks_4" />

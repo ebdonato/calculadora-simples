@@ -2,6 +2,8 @@
 
 Uma calculadora super simples, estilo R\$1,99, implementada com Framework Quasar.
 
+**Não funcionar ainda, apenas leiaute.**
+
 ## Install the dependencies
 
 ```bash
