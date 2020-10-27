@@ -12,21 +12,23 @@
                 @click="copyData"
                 class="full-width"
                 align="right"
+                size="1.5rem"
+                padding="xs"
             />
         </q-item-section>
     </q-item>
 </template>
 
 <script>
-import { copyToClipboard } from "quasar";
+import { copyToClipboard } from "quasar"
 
 export default {
     name: "display",
     props: ["value", "iconName"],
     methods: {
         copyData() {
-            copyToClipboard(this.value);
-        }
-    }
-};
+            copyToClipboard(this.value)
+        },
+    },
+}
 </script>
