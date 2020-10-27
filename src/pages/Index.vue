@@ -31,6 +31,7 @@
                         label="Trocar"
                         class="full-width"
                         size="1.5rem"
+                        @click="swap"
                     />
                 </div>
             </div>
@@ -55,6 +56,7 @@
                         label="x^y"
                         class="full-width"
                         size="1.5rem"
+                        @click="operation('**')"
                     />
                 </div>
                 <div class="col-3 q-pl-xs">
@@ -64,6 +66,7 @@
                         label="+"
                         class="full-width"
                         size="1.5rem"
+                        @click="operation('+')"
                     />
                 </div>
             </div>
@@ -108,6 +111,7 @@
                         label="-"
                         class="full-width"
                         size="1.5rem"
+                        @click="operation('-')"
                     />
                 </div>
             </div>
@@ -151,6 +155,7 @@
                         label="/"
                         class="full-width"
                         size="1.5rem"
+                        @click="operation('/')"
                     />
                 </div>
             </div>
@@ -194,6 +199,7 @@
                         label="*"
                         class="full-width"
                         size="1.5rem"
+                        @click="operation('*')"
                     />
                 </div>
             </div>
@@ -272,13 +278,10 @@ export default {
 
     methods: {
         clearMemory() {
-            console.log("Clear Memory")
             Object.assign(this.$data, this.$options.data())
         },
 
         addDigit(n) {
-            console.log("Add Digit ", n)
-
             const lastAtStack = this.preStack
 
             if (n === "." && lastAtStack.includes(".")) {
@@ -292,10 +295,16 @@ export default {
             this.preStack = lastAtStack === "0" ? n : lastAtStack + n
         },
 
-        enter() {
-            this.stack.unshift(this.preStack)
+        enter(event, callback, doubleNumber = true) {
+            if (this.preStack === "") {
+                if (doubleNumber) {
+                    this.stack.unshift(this.stack[0])
+                }
+            } else {
+                this.stack.unshift(this.preStack)
 
-            this.preStack = ""
+                this.preStack = ""
+            }
         },
 
         remove() {
@@ -306,6 +315,33 @@ export default {
             }
 
             this.preStack = this.stack.length > 0 ? "" : "0"
+        },
+
+        swap() {
+            if (this.stack.length < 2) return
+
+            const last = this.stack.shift()
+            const secondLast = this.stack.shift()
+
+            this.stack.unshift(last)
+            this.stack.unshift(secondLast)
+        },
+
+        operation(op) {
+            this.enter({}, () => {}, false)
+            if (this.stack.length < 2) return
+
+            const last = this.stack.shift()
+            const secondLast = this.stack.shift()
+
+            console.log(secondLast, op, last)
+
+            try {
+                this.stack.unshift(eval(`${secondLast} ${op} ${last}`))
+            } catch (e) {
+                this.stack.unshift(secondLast)
+                this.stack.unshift(last)
+            }
         },
     },
 }
