@@ -6,8 +6,10 @@
   "author": "ebdonato <63134122+ebdonato@users.noreply.github.com>",
   "private": true,
   "scripts": {
-    "test": "echo \"No test specified\" && exit 0",
-    "dev": "quasar dev"
+    "dev": "quasar dev",
+    "dev-pwa": "quasar dev -m pwa",
+    "build-pwa": "quasar build -m pwa",
+    "deploy": "firebase deploy"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
