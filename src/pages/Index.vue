@@ -1,243 +1,232 @@
 <template>
-    <q-page class="flex flex-center q-ma-none">
-        <div class="q-pa-xl q-ma-none">
-            <!-- Linhas do Display -->
-
-            <Display :value="digit4" iconName="looks_4" />
-            <Display :value="digit3" iconName="looks_3" />
-            <Display :value="digit2" iconName="looks_two" />
-            <Display
-                :value="digit1"
-                :iconName="preStack ? 'edit' : 'looks_one'"
-            />
-
+    <q-page padding class="constrain flex flex-center">
+        <div class="column col q-gutter-sm">
+            <div class="column q-gutter-sm">
+                <!-- Linhas do Display -->
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    icon="looks_4"
+                    :label="digit4"
+                    align="between"
+                    @click="copyData(digit4)"
+                    aria-label="Visor Linha 4"
+                />
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    icon="looks_3"
+                    :label="digit3"
+                    align="between"
+                    @click="copyData(digit3)"
+                    aria-label="Visor Linha 3"
+                />
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    icon="looks_two"
+                    :label="digit2"
+                    align="between"
+                    @click="copyData(digit2)"
+                    aria-label="Visor Linha 2"
+                />
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    :icon="preStack ? 'edit' : 'looks_one'"
+                    :label="digit1"
+                    align="between"
+                    @click="copyData(digit1)"
+                    aria-label="Visor Linha 1"
+                />
+            </div>
             <!-- Primeira Linha -->
 
-            <div class="row q-py-xs">
-                <div class="col-6 q-pr-xs">
-                    <q-btn
-                        outline
-                        color="primary"
-                        label="Remover"
-                        class="full-width"
-                        size="1.5rem"
-                        @click="remove"
-                    />
-                </div>
-                <div class="col-6 q-pl-xs">
-                    <q-btn
-                        outline
-                        color="primary"
-                        label="Trocar"
-                        class="full-width"
-                        size="1.5rem"
-                        @click="swap"
-                    />
-                </div>
+            <div class="row q-gutter-sm">
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    icon="clear_all"
+                    @click="clearMemory"
+                    aria-label="Limpar tudo"
+                />
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    icon="swap_vert"
+                    @click="swap"
+                    aria-label="Inverter"
+                />
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    label="x^y"
+                    @click="operation('**')"
+                    aria-label="Potência"
+                />
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    label="/"
+                    @click="operation('/')"
+                    aria-label="Divisão"
+                />
             </div>
 
             <!-- Segunda Linha -->
 
-            <div class="row q-py-xs">
-                <div class="col-6 q-pr-xs">
-                    <q-btn
-                        outline
-                        color="primary"
-                        label="Limpar"
-                        class="full-width"
-                        size="1.5rem"
-                        @click="clearMemory"
-                    />
-                </div>
-                <div class="col-3 q-px-xs">
-                    <q-btn
-                        outline
-                        color="primary"
-                        label="x^y"
-                        class="full-width"
-                        size="1.5rem"
-                        @click="operation('**')"
-                    />
-                </div>
-                <div class="col-3 q-pl-xs">
-                    <q-btn
-                        outline
-                        color="primary"
-                        label="+"
-                        class="full-width"
-                        size="1.5rem"
-                        @click="operation('+')"
-                    />
-                </div>
+            <div class="row q-gutter-sm">
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    label="7"
+                    @click="addDigit('7')"
+                    aria-label="Digíto 7"
+                />
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    label="8"
+                    @click="addDigit('8')"
+                    aria-label="Digíto 8"
+                />
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    label="9"
+                    @click="addDigit('9')"
+                    aria-label="Digíto 9"
+                />
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    label="*"
+                    @click="operation('*')"
+                    aria-label="Multiplicação"
+                />
             </div>
 
             <!-- Terceira Linha -->
 
-            <div class="row q-py-xs">
-                <div class="col-3 q-pr-xs">
-                    <q-btn
-                        outline
-                        color="primary"
-                        label="7"
-                        class="full-width"
-                        size="1.5rem"
-                        @click="addDigit('7')"
-                    />
-                </div>
-                <div class="col-3 q-px-xs">
-                    <q-btn
-                        outline
-                        color="primary"
-                        label="8"
-                        class="full-width"
-                        size="1.5rem"
-                        @click="addDigit('8')"
-                    />
-                </div>
-                <div class="col-3 q-px-xs">
-                    <q-btn
-                        outline
-                        color="primary"
-                        label="9"
-                        class="full-width"
-                        size="1.5rem"
-                        @click="addDigit('9')"
-                    />
-                </div>
-                <div class="col-3 q-pl-xs">
-                    <q-btn
-                        outline
-                        color="primary"
-                        label="-"
-                        class="full-width"
-                        size="1.5rem"
-                        @click="operation('-')"
-                    />
-                </div>
+            <div class="row q-gutter-sm">
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    label="4"
+                    @click="addDigit('4')"
+                    aria-label="Digíto 4"
+                />
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    label="5"
+                    @click="addDigit('5')"
+                    aria-label="Digíto 5"
+                />
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    label="6"
+                    @click="addDigit('6')"
+                    aria-label="Digíto 6"
+                />
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    label="-"
+                    @click="operation('-')"
+                    aria-label="Subtração"
+                />
             </div>
+
             <!-- Quarta Linha -->
 
-            <div class="row q-py-xs">
-                <div class="col-3 q-pr-xs">
-                    <q-btn
-                        outline
-                        color="primary"
-                        label="4"
-                        class="full-width"
-                        size="1.5rem"
-                        @click="addDigit('4')"
-                    />
-                </div>
-                <div class="col-3 q-px-xs">
-                    <q-btn
-                        outline
-                        color="primary"
-                        label="5"
-                        class="full-width"
-                        size="1.5rem"
-                        @click="addDigit('5')"
-                    />
-                </div>
-                <div class="col-3 q-px-xs">
-                    <q-btn
-                        outline
-                        color="primary"
-                        label="6"
-                        class="full-width"
-                        size="1.5rem"
-                        @click="addDigit('6')"
-                    />
-                </div>
-                <div class="col-3 q-pl-xs">
-                    <q-btn
-                        outline
-                        color="primary"
-                        label="/"
-                        class="full-width"
-                        size="1.5rem"
-                        @click="operation('/')"
-                    />
-                </div>
+            <div class="row q-gutter-sm">
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    label="1"
+                    @click="addDigit('1')"
+                    aria-label="Digíto 1"
+                />
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    label="2"
+                    @click="addDigit('2')"
+                    aria-label="Digíto 2"
+                />
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    label="3"
+                    @click="addDigit('3')"
+                    aria-label="Digíto 3"
+                />
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    label="+"
+                    @click="operation('+')"
+                    aria-label="Adição"
+                />
             </div>
+
             <!-- Quinta Linha -->
 
-            <div class="row q-py-xs">
-                <div class="col-3 q-pr-xs">
-                    <q-btn
-                        outline
-                        color="primary"
-                        label="1"
-                        class="full-width"
-                        size="1.5rem"
-                        @click="addDigit('1')"
-                    />
-                </div>
-                <div class="col-3 q-px-xs">
-                    <q-btn
-                        outline
-                        color="primary"
-                        label="2"
-                        class="full-width"
-                        size="1.5rem"
-                        @click="addDigit('2')"
-                    />
-                </div>
-                <div class="col-3 q-px-xs">
-                    <q-btn
-                        outline
-                        color="primary"
-                        label="3"
-                        class="full-width"
-                        size="1.5rem"
-                        @click="addDigit('3')"
-                    />
-                </div>
-                <div class="col-3 q-pl-xs">
-                    <q-btn
-                        outline
-                        color="primary"
-                        label="*"
-                        class="full-width"
-                        size="1.5rem"
-                        @click="operation('*')"
-                    />
-                </div>
-            </div>
-
-            <!-- Sexta Linha -->
-
-            <div class="row q-py-xs">
-                <div class="col-3 q-pr-xs">
-                    <q-btn
-                        outline
-                        color="primary"
-                        label="0"
-                        class="full-width"
-                        size="1.5rem"
-                        @click="addDigit('0')"
-                    />
-                </div>
-                <div class="col-3 q-px-xs">
-                    <q-btn
-                        outline
-                        color="primary"
-                        label="."
-                        class="full-width"
-                        size="1.5rem"
-                        @click="addDigit('.')"
-                    />
-                </div>
-
-                <div class="col-6 q-pl-xs">
-                    <q-btn
-                        outline
-                        color="primary"
-                        label="OK"
-                        class="full-width"
-                        size="1.5rem"
-                        @click="enter"
-                    />
-                </div>
+            <div class="row q-gutter-sm">
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    label="0"
+                    @click="addDigit('0')"
+                    aria-label="Digíto 0"
+                />
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    label="."
+                    @click="addDigit('.')"
+                    aria-label="Decimal"
+                />
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    icon="backspace"
+                    @click="remove"
+                    aria-label="Remover"
+                />
+                <q-btn
+                    outline
+                    size="lg"
+                    class="col"
+                    icon="keyboard_return"
+                    @click="enter"
+                    aria-label="OK"
+                />
             </div>
 
             <!-- Fim -->
@@ -246,11 +235,11 @@
 </template>
 
 <script>
-import Display from "components/Display.vue"
+import { copyToClipboard } from "quasar"
 
 export default {
     name: "PageIndex",
-    components: { Display },
+
     data() {
         return {
             editMode: false,
@@ -275,12 +264,13 @@ export default {
             return this.stack[3 + n] || ""
         },
     },
-
     methods: {
         clearMemory() {
             Object.assign(this.$data, this.$options.data())
         },
-
+        copyData(value) {
+            copyToClipboard(value)
+        },
         addDigit(n) {
             const lastAtStack = this.preStack
 
@@ -346,9 +336,3 @@ export default {
     },
 }
 </script>
-
-<style lang="sass">
-.q-btn__wrapper
-    .q-btn__content
-        max-width: 280px
-</style>
