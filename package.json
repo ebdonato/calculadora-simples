@@ -9,7 +9,8 @@
     "dev": "quasar dev",
     "dev-pwa": "quasar dev -m pwa",
     "build-pwa": "quasar build -m pwa",
-    "deploy": "firebase deploy"
+    "icongenie": "icongenie generate -i ./public/icon.png --skip-trim --theme-color ffe000",
+    "firebase-deploy": "firebase deploy"
   },
   "dependencies": {
     "@quasar/extras": "^1.9.17",
