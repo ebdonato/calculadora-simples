@@ -6,24 +6,22 @@
             'drawer-bg-dark': this.$q.dark.isActive,
         }"
     >
-        <q-header class="bg-transparent">
-            <q-toolbar>
-                <q-btn
-                    flat
-                    dense
-                    round
-                    :color="$q.dark.isActive ? 'white' : 'black'"
-                    icon="menu"
-                    aria-label="Menu"
-                    @click="leftDrawerOpen = !leftDrawerOpen"
-                />
-                <q-space></q-space>
-                <q-btn flat dense round aria-label="Eu!" @click="autoClose">
-                    <q-avatar size="sm">
-                        <img src="eu.jpg" />
-                    </q-avatar>
-                </q-btn>
-            </q-toolbar>
+        <q-header class="row bg-transparent">
+            <q-btn
+                flat
+                dense
+                round
+                :color="$q.dark.isActive ? 'white' : 'black'"
+                icon="menu"
+                aria-label="Menu"
+                @click="leftDrawerOpen = !leftDrawerOpen"
+            />
+            <q-space></q-space>
+            <q-btn flat dense round aria-label="Eu!" @click="autoClose">
+                <q-avatar size="sm">
+                    <img src="eu.jpg" />
+                </q-avatar>
+            </q-btn>
         </q-header>
 
         <q-drawer v-model="leftDrawerOpen" bordered>
