@@ -7,7 +7,7 @@
 export default {
     name: "App",
     created() {
-        this.$q.dark.set(this.$q.localStorage.getItem("darkTheme") ?? true)
+        this.$q.dark.set(this.$q.localStorage.getItem("darkTheme") ?? false)
         this.$store.commit(
             "config/setColors",
             this.$q.localStorage.getItem("gradientColors") ?? [
