@@ -11,6 +11,16 @@
                 @click="leftDrawerOpen = !leftDrawerOpen"
             />
             <q-space></q-space>
+            <q-btn
+                v-if="$router.currentRoute.name != 'Index'"
+                flat
+                dense
+                round
+                :color="$q.dark.isActive ? 'white' : 'black'"
+                icon="arrow_back"
+                aria-label="Início"
+                :to="{ name: 'Index' }"
+            />
             <q-btn flat dense round aria-label="Eu!" @click="autoClose">
                 <q-avatar size="sm">
                     <img src="eu.jpg" />
@@ -76,7 +86,13 @@
         </q-drawer>
 
         <q-page-container>
-            <router-view />
+            <transition
+                mode="out-in"
+                enter-active-class="animated fadeIn"
+                leave-active-class="animated fadeOut"
+            >
+                <router-view />
+            </transition>
         </q-page-container>
     </q-layout>
 </template>

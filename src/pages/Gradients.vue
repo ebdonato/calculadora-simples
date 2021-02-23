@@ -15,7 +15,7 @@
                 :key="id"
                 no-caps
                 class="col-12 col-md-5"
-                :label="gradient.name"
+                :label="`${id + 1} - ${gradient.name}`"
                 :style="{
                     background: style(gradient.colors),
                 }"
