@@ -11,8 +11,12 @@
                     :label="digit4"
                     align="between"
                     @click="copyData(digit4)"
-                    aria-label="Visor Linha 4"
-                />
+                    aria-label="Pilha Linha 4"
+                >
+                    <q-tooltip :delay="1000" :offset="[0, 10]"
+                        >Pilha Linha 4</q-tooltip
+                    >
+                </q-btn>
                 <q-btn
                     outline
                     size="lg"
@@ -21,8 +25,12 @@
                     :label="digit3"
                     align="between"
                     @click="copyData(digit3)"
-                    aria-label="Visor Linha 3"
-                />
+                    aria-label="Pilha Linha 3"
+                >
+                    <q-tooltip :delay="1000" :offset="[0, 10]"
+                        >Pilha Linha 3</q-tooltip
+                    >
+                </q-btn>
                 <q-btn
                     outline
                     size="lg"
@@ -31,8 +39,12 @@
                     :label="digit2"
                     align="between"
                     @click="copyData(digit2)"
-                    aria-label="Visor Linha 2"
-                />
+                    aria-label="Pilha Linha 2"
+                >
+                    <q-tooltip :delay="1000" :offset="[0, 10]"
+                        >Pilha Linha 2</q-tooltip
+                    >
+                </q-btn>
                 <q-btn
                     outline
                     size="lg"
@@ -41,8 +53,12 @@
                     :label="digit1"
                     align="between"
                     @click="copyData(digit1)"
-                    aria-label="Visor Linha 1"
-                />
+                    aria-label="Pilha Linha 1"
+                >
+                    <q-tooltip :delay="1000" :offset="[0, 10]"
+                        >Pilha Linha 1</q-tooltip
+                    >
+                </q-btn>
             </div>
             <!-- Primeira Linha -->
 
@@ -54,7 +70,11 @@
                     icon="clear_all"
                     @click="clearMemory"
                     aria-label="Limpar tudo"
-                />
+                >
+                    <q-tooltip :delay="1000" :offset="[0, 10]"
+                        >Limpar toda a pilha</q-tooltip
+                    >
+                </q-btn>
                 <q-btn
                     outline
                     size="lg"
@@ -62,7 +82,12 @@
                     icon="swap_vert"
                     @click="swap"
                     aria-label="Inverter"
-                />
+                >
+                    <q-tooltip :delay="1000" :offset="[0, 10]"
+                        >Inverter a posição dos dois últimos números da
+                        pilha</q-tooltip
+                    >
+                </q-btn>
                 <q-btn
                     outline
                     size="lg"
@@ -70,7 +95,11 @@
                     label="x^y"
                     @click="operation('**')"
                     aria-label="Potência"
-                />
+                >
+                    <q-tooltip :delay="1000" :offset="[0, 10]"
+                        >Potência</q-tooltip
+                    >
+                </q-btn>
                 <q-btn
                     outline
                     size="lg"
@@ -78,7 +107,11 @@
                     label="/"
                     @click="operation('/')"
                     aria-label="Divisão"
-                />
+                >
+                    <q-tooltip :delay="1000" :offset="[0, 10]"
+                        >Divisão</q-tooltip
+                    >
+                </q-btn>
             </div>
 
             <!-- Segunda Linha -->
@@ -115,7 +148,11 @@
                     label="*"
                     @click="operation('*')"
                     aria-label="Multiplicação"
-                />
+                >
+                    <q-tooltip :delay="1000" :offset="[0, 10]"
+                        >Multiplicação</q-tooltip
+                    >
+                </q-btn>
             </div>
 
             <!-- Terceira Linha -->
@@ -152,7 +189,11 @@
                     label="-"
                     @click="operation('-')"
                     aria-label="Subtração"
-                />
+                >
+                    <q-tooltip :delay="1000" :offset="[0, 10]"
+                        >Subtração</q-tooltip
+                    >
+                </q-btn>
             </div>
 
             <!-- Quarta Linha -->
@@ -189,7 +230,11 @@
                     label="+"
                     @click="operation('+')"
                     aria-label="Adição"
-                />
+                >
+                    <q-tooltip :delay="1000" :offset="[0, 10]"
+                        >Adição</q-tooltip
+                    >
+                </q-btn>
             </div>
 
             <!-- Quinta Linha -->
@@ -218,15 +263,23 @@
                     icon="backspace"
                     @click="remove"
                     aria-label="Remover"
-                />
+                >
+                    <q-tooltip :delay="1000" :offset="[0, 10]"
+                        >Remover último número da pilha</q-tooltip
+                    >
+                </q-btn>
                 <q-btn
                     outline
                     size="lg"
                     class="col"
                     icon="keyboard_return"
                     @click="enter"
-                    aria-label="OK"
-                />
+                    aria-label="Confirmar entrada"
+                >
+                    <q-tooltip :delay="1000" :offset="[0, 10]"
+                        >Confirmar entrada</q-tooltip
+                    >
+                </q-btn>
             </div>
 
             <!-- Fim -->
@@ -239,7 +292,6 @@ import { copyToClipboard } from "quasar"
 
 export default {
     name: "PageIndex",
-
     data() {
         return {
             editMode: false,
@@ -249,16 +301,19 @@ export default {
     },
     computed: {
         digit1() {
-            return this.preStack || this.stack[0] || ""
+            return this.preStack || (this.stack[0] ?? "")
         },
+
         digit2() {
             let n = this.preStack !== "" ? -1 : 0
             return this.stack[1 + n] || ""
         },
+
         digit3() {
             let n = this.preStack !== "" ? -1 : 0
             return this.stack[2 + n] || ""
         },
+
         digit4() {
             let n = this.preStack !== "" ? -1 : 0
             return this.stack[3 + n] || ""
@@ -268,9 +323,11 @@ export default {
         clearMemory() {
             Object.assign(this.$data, this.$options.data())
         },
+
         copyData(value) {
             copyToClipboard(value)
         },
+
         addDigit(n) {
             const lastAtStack = this.preStack
 
@@ -285,14 +342,11 @@ export default {
             this.preStack = lastAtStack === "0" ? n : lastAtStack + n
         },
 
-        enter(event, callback, doubleNumber = true) {
+        enter() {
             if (this.preStack === "") {
-                if (doubleNumber) {
-                    this.stack.unshift(this.stack[0])
-                }
+                this.stack.unshift(this.stack[0])
             } else {
                 this.stack.unshift(this.preStack)
-
                 this.preStack = ""
             }
         },
@@ -308,6 +362,10 @@ export default {
         },
 
         swap() {
+            if (this.preStack != "") {
+                this.enter()
+            }
+
             if (this.stack.length < 2) return
 
             const last = this.stack.shift()
@@ -318,7 +376,10 @@ export default {
         },
 
         operation(op) {
-            this.enter({}, () => {}, false)
+            if (this.preStack != "") {
+                this.enter()
+            }
+
             if (this.stack.length < 2) return
 
             const last = this.stack.shift()

@@ -1,11 +1,5 @@
 <template>
-    <q-layout
-        view="lHh Lpr lFf"
-        :class="{
-            'drawer-bg-light': !this.$q.dark.isActive,
-            'drawer-bg-dark': this.$q.dark.isActive,
-        }"
-    >
+    <q-layout view="lHh Lpr lFf" :style="getBackgroundStyle">
         <q-header class="row bg-transparent">
             <q-btn
                 flat
@@ -24,9 +18,13 @@
             </q-btn>
         </q-header>
 
-        <q-drawer v-model="leftDrawerOpen" bordered>
+        <q-drawer
+            v-model="leftDrawerOpen"
+            bordered
+            :content-style="{ backgroundColor: getColors[0] }"
+        >
             <div class="q-ma-none q-pa-md text-center">
-                <img alt="PDF da Sarah" src="icons\favicon-128x128.png" />
+                <img alt="Logo" src="icons\favicon-128x128.png" />
             </div>
 
             <q-btn
@@ -51,8 +49,28 @@
                 <q-select
                     v-model="themeChoice"
                     :options="['Claro', 'Escuro']"
-                    label="Tema"
+                    label="Cor do Texto"
                     @input="changeThemeMode"
+                />
+                <q-select
+                    v-model="gradientDirection"
+                    :options="[
+                        'Horizontal',
+                        'Vertical',
+                        'Diagonal',
+                        'Sem Gradiente',
+                    ]"
+                    label="Gradiente"
+                    @input="changeDirection"
+                />
+
+                <q-btn
+                    outline
+                    no-caps
+                    class="full-width q-ma-sm"
+                    label="Cores"
+                    align="left"
+                    :to="{ name: 'Gradients' }"
                 />
             </div>
         </q-drawer>
@@ -65,6 +83,7 @@
 
 <script>
 import EssentialLink from "components/EssentialLink.vue"
+import { mapGetters } from "vuex"
 
 const linksData = [
     {
@@ -112,14 +131,32 @@ export default {
         return {
             leftDrawerOpen: false,
             essentialLinks: linksData,
-            themeChoice: "Claro",
+            themeChoice: "Escuro",
+            gradientDirection: "Vertical",
             showMenu: true,
         }
     },
+    computed: {
+        ...mapGetters("config", ["getBackgroundStyle", "getColors"]),
+        gradientSample() {
+            return [
+                this.$store.getters["config/getColors"][0],
+                `-webkit-linear-gradient(to right,${this.$store.getters[
+                    "config/getColors"
+                ].join(",")})`,
+                `linear-gradient(to right,${this.$store.getters[
+                    "config/getColors"
+                ].join(",")})`,
+            ]
+        },
+    },
     methods: {
         changeThemeMode() {
-            this.$q.dark.set(this.themeChoice == "Escuro")
+            this.$q.dark.set(this.themeChoice == "Claro")
             this.$q.localStorage.set("darkTheme", this.$q.dark.isActive)
+        },
+        changeDirection() {
+            this.$store.commit("config/setDirection", this.gradientDirection)
         },
         toggleShowMenu() {
             this.showMenu = !this.showMenu
@@ -135,7 +172,6 @@ export default {
                 })
                 .onDismiss(() => {
                     clearTimeout(timer)
-                    // console.log('I am triggered on both OK and Cancel')
                 })
 
             const timer = setInterval(() => {
@@ -149,7 +185,8 @@ export default {
         },
     },
     mounted() {
-        this.themeChoice = this.$q.dark.isActive ? "Escuro" : "Claro"
+        this.themeChoice = this.$q.dark.isActive ? "Claro" : "Escuro"
+        this.gradientDirection = this.$store.getters["config/getDirection"]
     },
 }
 </script>
