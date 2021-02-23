@@ -5,6 +5,7 @@
                 <!-- Linhas do Display -->
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
                     icon="looks_4"
@@ -19,6 +20,7 @@
                 </q-btn>
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
                     icon="looks_3"
@@ -33,6 +35,7 @@
                 </q-btn>
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
                     icon="looks_two"
@@ -47,6 +50,7 @@
                 </q-btn>
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
                     :icon="preStack ? 'edit' : 'looks_one'"
@@ -65,9 +69,10 @@
             <div class="row q-gutter-sm">
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
-                    icon="clear_all"
+                    icon="las la-trash"
                     @click="clearMemory"
                     aria-label="Limpar tudo"
                 >
@@ -77,6 +82,7 @@
                 </q-btn>
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
                     icon="swap_vert"
@@ -90,9 +96,11 @@
                 </q-btn>
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
                     label="x^y"
+                    no-caps
                     @click="operation('**')"
                     aria-label="Potência"
                 >
@@ -102,9 +110,10 @@
                 </q-btn>
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
-                    label="/"
+                    icon="las la-divide"
                     @click="operation('/')"
                     aria-label="Divisão"
                 >
@@ -119,6 +128,7 @@
             <div class="row q-gutter-sm">
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
                     label="7"
@@ -127,6 +137,7 @@
                 />
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
                     label="8"
@@ -135,6 +146,7 @@
                 />
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
                     label="9"
@@ -143,9 +155,10 @@
                 />
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
-                    label="*"
+                    icon="las la-times"
                     @click="operation('*')"
                     aria-label="Multiplicação"
                 >
@@ -160,6 +173,7 @@
             <div class="row q-gutter-sm">
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
                     label="4"
@@ -168,6 +182,7 @@
                 />
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
                     label="5"
@@ -176,6 +191,7 @@
                 />
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
                     label="6"
@@ -184,9 +200,10 @@
                 />
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
-                    label="-"
+                    icon="las la-minus"
                     @click="operation('-')"
                     aria-label="Subtração"
                 >
@@ -201,6 +218,7 @@
             <div class="row q-gutter-sm">
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
                     label="1"
@@ -209,6 +227,7 @@
                 />
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
                     label="2"
@@ -217,6 +236,7 @@
                 />
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
                     label="3"
@@ -225,9 +245,10 @@
                 />
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
-                    label="+"
+                    icon="las la-plus"
                     @click="operation('+')"
                     aria-label="Adição"
                 >
@@ -242,6 +263,7 @@
             <div class="row q-gutter-sm">
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
                     label="0"
@@ -250,6 +272,7 @@
                 />
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
                     label="."
@@ -258,9 +281,10 @@
                 />
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
-                    icon="backspace"
+                    icon="las la-backspace"
                     @click="remove"
                     aria-label="Remover"
                 >
@@ -270,6 +294,7 @@
                 </q-btn>
                 <q-btn
                     outline
+                    rounded
                     size="lg"
                     class="col"
                     icon="keyboard_return"

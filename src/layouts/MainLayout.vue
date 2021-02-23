@@ -82,6 +82,15 @@
                     align="left"
                     :to="{ name: 'Gradients' }"
                 />
+
+                <q-btn
+                    flat
+                    class="full-width"
+                    :label="`v${version}`"
+                    align="right"
+                    no-caps
+                    @click="autoClose"
+                ></q-btn>
             </div>
         </q-drawer>
 
@@ -99,6 +108,7 @@
 
 <script>
 import EssentialLink from "components/EssentialLink.vue"
+import { version } from "../../package.json"
 import { mapGetters } from "vuex"
 
 const linksData = [
@@ -150,6 +160,7 @@ export default {
             themeChoice: "Escuro",
             gradientDirection: "Vertical",
             showMenu: true,
+            version,
         }
     },
     computed: {

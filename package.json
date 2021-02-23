@@ -1,6 +1,6 @@
 {
   "name": "calculadora-simples",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Uma calculadora super simples, estilo R$1,99, implementada com Framework Quasar.",
   "productName": "Calculadora Super Simples",
   "author": "ebdonato <63134122+ebdonato@users.noreply.github.com>",
