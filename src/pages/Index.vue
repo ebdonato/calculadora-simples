@@ -390,11 +390,11 @@ export default {
         remove() {
             if (this.preStack === "") {
                 this.stack.shift()
+                this.stack.length || (this.preStack = "0")
             } else {
-                this.preStack = ""
+                this.preStack =
+                    this.preStack.split("").slice(0, -1).join("") || "0"
             }
-
-            this.preStack = this.stack.length > 0 ? "" : "0"
         },
 
         swap() {
