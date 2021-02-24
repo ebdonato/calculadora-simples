@@ -382,7 +382,7 @@ export default {
             if (this.preStack === "") {
                 this.stack.unshift(this.stack[0])
             } else {
-                this.stack.unshift(this.preStack)
+                this.stack.unshift(Number(this.preStack))
                 this.preStack = ""
             }
         },
@@ -421,7 +421,7 @@ export default {
             const last = this.stack.shift()
             const secondLast = this.stack.shift()
 
-            console.log(secondLast, op, last)
+            //console.log(secondLast, op, last)
 
             try {
                 this.stack.unshift(eval(`${secondLast} ${op} ${last}`))
