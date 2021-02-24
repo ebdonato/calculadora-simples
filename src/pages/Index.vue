@@ -319,10 +319,13 @@ export default {
     name: "PageIndex",
     data() {
         return {
-            editMode: false,
             preStack: "0",
             stack: [],
         }
+    },
+    mounted() {
+        this.preStack = this.$q.localStorage.getItem("preStack") ?? "0"
+        this.stack = this.$q.localStorage.getItem("stack") ?? []
     },
     computed: {
         digit1() {
@@ -342,6 +345,14 @@ export default {
         digit4() {
             let n = this.preStack !== "" ? -1 : 0
             return this.stack[3 + n] || ""
+        },
+    },
+    watch: {
+        preStack() {
+            this.$q.localStorage.set("preStack", this.preStack)
+        },
+        stack() {
+            this.$q.localStorage.set("stack", this.stack)
         },
     },
     methods: {
