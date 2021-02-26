@@ -16,8 +16,10 @@
                 no-caps
                 class="col-12 col-md-5"
                 :label="`${id + 1} - ${gradient.name}`"
+                style="min-width: 100px"
                 :style="{
-                    background: style(gradient.colors),
+                    background: styleBG(gradient.colors),
+                    color: styleFG(gradient.colors),
                 }"
                 @click="setColors(gradient.colors)"
             />
@@ -27,6 +29,7 @@
 </template>
 
 <script>
+import defaultGradient from "assets/defaultGradient"
 import axios from "axios"
 
 export default {
@@ -37,7 +40,10 @@ export default {
         }
     },
     methods: {
-        style(colors) {
+        styleFG(colors) {
+            return this.lightOrDark(colors[0]) ? "#000" : "#FFF"
+        },
+        styleBG(colors) {
             return [
                 colors[0],
                 `-webkit-linear-gradient(to right,${[...colors].join(",")})`,
@@ -48,8 +54,6 @@ export default {
             this.$store.commit("config/setColors", [...colors])
 
             const lightColor = this.lightOrDark(colors[0])
-
-            console.log("cor clara? ", lightColor)
 
             if (this.$q.dark.isActive == lightColor) {
                 this.$q
@@ -116,16 +120,28 @@ export default {
         },
     },
     mounted() {
+        const gradient = {
+            name: "Original",
+            colors: [...defaultGradient],
+        }
+        const ufv2001 = {
+            name: "UFV 2001",
+            colors: ["#FFEE00", "FFFF00"],
+        }
+
         this.gradients = this.$q.localStorage.getItem("uiGradients") ?? [
-            "#ffe000",
-            "#fff292",
+            gradient,
+            ufv2001,
         ]
 
         axios
             .get("https://uigradients.com/gradients.json")
             .then((response) => {
                 this.gradients = [...response.data]
-                this.$q.localStorage.set("uiGradients", [...response.data])
+                this.gradients.unshift(ufv2001)
+                this.gradients.unshift(gradient)
+
+                this.$q.localStorage.set("uiGradients", [...this.gradients])
             })
             .catch((e) => {
                 console.error(e)

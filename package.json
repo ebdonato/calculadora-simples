@@ -1,6 +1,6 @@
 {
   "name": "calculadora-simples",
-  "version": "2.5.2",
+  "version": "2.6.0",
   "description": "Uma calculadora RPN super simples, estilo R$1,99, implementada com Framework Quasar.",
   "productName": "Calculadora RPN Super Simples",
   "author": "ebdonato <63134122+ebdonato@users.noreply.github.com>",
@@ -9,7 +9,7 @@
     "dev": "quasar dev",
     "dev-pwa": "quasar dev -m pwa",
     "build-pwa": "quasar build -m pwa",
-    "icongenie": "icongenie generate -i ./public/icon.png --skip-trim --theme-color ffe000",
+    "icongenie": "icongenie generate -i ./public/icon.png --skip-trim --theme-color 13505b",
     "firebase-deploy": "firebase deploy"
   },
   "dependencies": {
