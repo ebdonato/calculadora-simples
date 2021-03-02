@@ -334,17 +334,17 @@ export default {
 
         digit2() {
             let n = this.preStack !== "" ? -1 : 0
-            return this.stack[1 + n] || ""
+            return this.stack[1 + n] ?? ""
         },
 
         digit3() {
             let n = this.preStack !== "" ? -1 : 0
-            return this.stack[2 + n] || ""
+            return this.stack[2 + n] ?? ""
         },
 
         digit4() {
             let n = this.preStack !== "" ? -1 : 0
-            return this.stack[3 + n] || ""
+            return this.stack[3 + n] ?? ""
         },
     },
     watch: {
