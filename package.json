@@ -1,6 +1,6 @@
 {
   "name": "calculadora-simples",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "description": "Uma calculadora RPN super simples, estilo R$1,99, implementada com Framework Quasar.",
   "productName": "Calculadora RPN Super Simples",
   "author": "ebdonato <63134122+ebdonato@users.noreply.github.com>",

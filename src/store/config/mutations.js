@@ -1,5 +1,5 @@
 import { LocalStorage, AddressbarColor, colors } from 'quasar'
-const { setBrand } = colors
+const { setBrand, lighten } = colors
 
 export function setColors(state, colors) {
     state.colors = [...colors]
@@ -7,7 +7,7 @@ export function setColors(state, colors) {
     AddressbarColor.set(colors[0])
     setBrand('primary', colors[0])
     setBrand('secondary', colors[1])
-    setBrand('accent', colors[2] ?? colors[1])
+    setBrand('accent', colors[2] ?? lighten(colors[1], -20))
 }
 
 export function setDirection(state, direction) {

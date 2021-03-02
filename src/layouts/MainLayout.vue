@@ -165,17 +165,6 @@ export default {
     },
     computed: {
         ...mapGetters("config", ["getBackgroundStyle", "getColors"]),
-        gradientSample() {
-            return [
-                this.$store.getters["config/getColors"][0],
-                `-webkit-linear-gradient(to right,${this.$store.getters[
-                    "config/getColors"
-                ].join(",")})`,
-                `linear-gradient(to right,${this.$store.getters[
-                    "config/getColors"
-                ].join(",")})`,
-            ]
-        },
     },
     methods: {
         changeThemeMode() {
