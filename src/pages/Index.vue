@@ -326,6 +326,10 @@ export default {
     mounted() {
         this.preStack = this.$q.localStorage.getItem("preStack") ?? "0"
         this.stack = this.$q.localStorage.getItem("stack") ?? []
+        window.addEventListener("keydown", this.handleKeydown)
+    },
+    beforeDestroy() {
+        window.removeEventListener("keydown", this.handleKeydown)
     },
     computed: {
         digit1() {
@@ -356,6 +360,47 @@ export default {
         },
     },
     methods: {
+        handleKeydown(event) {
+            // Mantém atalhos do navegador (Ctrl+C, Ctrl+R, etc.)
+            if (event.ctrlKey || event.metaKey || event.altKey) return
+
+            // Não interfere na digitação em campos de formulário
+            const target = event.target
+            if (
+                target &&
+                (target.isContentEditable ||
+                    ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName))
+            ) {
+                return
+            }
+
+            const key = event.key
+
+            if (/^[0-9]$/.test(key)) {
+                this.addDigit(key)
+            } else if (key === "." || key === ",") {
+                this.addDigit(".")
+            } else if (["+", "-", "*", "/"].includes(key)) {
+                this.operation(key)
+            } else if (key === "^") {
+                this.operation("**")
+            } else if (key === "Enter") {
+                this.enter()
+            } else if (key === "Backspace") {
+                this.remove()
+            } else if (key === "Delete" || key === "Escape") {
+                this.clearMemory()
+            } else if (key === "s" || key === "S") {
+                this.swap()
+            } else {
+                return
+            }
+
+            // Evita ações padrão (ex.: Enter acionando o botão em foco,
+            // "/" abrindo a busca rápida do Firefox)
+            event.preventDefault()
+        },
+
         clearMemory() {
             Object.assign(this.$data, this.$options.data())
         },
