@@ -44,6 +44,9 @@ module.exports = function (/* ctx */) {
     build: {
       vueRouterMode: 'hash', // available values: 'hash', 'history'
 
+      // Permite publicar em um subdiretório (ex.: GitHub Pages)
+      publicPath: process.env.PUBLIC_PATH || '/',
+
       // transpile: false,
 
       // Add dependencies for transpiling with Babel (Array of string/regex)
