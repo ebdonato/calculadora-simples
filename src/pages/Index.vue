@@ -1,6 +1,6 @@
 <template>
     <q-page padding class="row justify-center items-center">
-        <div class="column col-12 col-sm q-gutter-sm constrain">
+        <div class="column q-gutter-sm constrain">
             <div class="column q-gutter-sm">
                 <!-- Linhas do Display -->
                 <q-btn
