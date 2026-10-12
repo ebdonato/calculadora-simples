@@ -342,8 +342,12 @@
                     @click="copyData(item.result)"
                 >
                     <q-item-section>
-                        <q-item-label caption>{{ item.expression }}</q-item-label>
-                        <q-item-label>= {{ item.result }}</q-item-label>
+                        <q-item-label caption class="ellipsis" :title="item.expression">{{
+                            item.expression
+                        }}</q-item-label>
+                        <q-item-label class="ellipsis" :title="item.result">= {{
+                            item.result
+                        }}</q-item-label>
                     </q-item-section>
                 </q-item>
             </q-list>
@@ -531,7 +535,7 @@ export default {
                     expression: `${secondLast} ${op === "**" ? "^" : op} ${last}`,
                     result,
                 })
-                this.history.splice(100)
+                this.history.splice(50)
             } catch (e) {
                 this.stack.unshift(secondLast)
                 this.stack.unshift(last)
