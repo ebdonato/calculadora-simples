@@ -1,6 +1,6 @@
 <template>
-    <q-page padding class="constrain flex flex-center">
-        <div class="column col q-gutter-sm">
+    <q-page padding class="row justify-center items-center">
+        <div class="column col-12 col-sm q-gutter-sm constrain">
             <div class="column q-gutter-sm">
                 <!-- Linhas do Display -->
                 <q-btn
@@ -309,6 +309,45 @@
 
             <!-- Fim -->
         </div>
+
+        <div
+            v-if="showHistory"
+            class="column history"
+            aria-label="Histórico de operações"
+        >
+            <div class="row items-center no-wrap">
+                <div class="text-subtitle1 col">Histórico</div>
+                <q-btn
+                    flat
+                    dense
+                    round
+                    icon="las la-trash"
+                    aria-label="Limpar histórico"
+                    :disable="!history.length"
+                    @click="clearHistory"
+                >
+                    <q-tooltip :delay="1000">Limpar histórico</q-tooltip>
+                </q-btn>
+            </div>
+            <q-list dense separator class="col scroll history-list">
+                <q-item v-if="!history.length">
+                    <q-item-section class="text-grey">
+                        Nenhuma operação
+                    </q-item-section>
+                </q-item>
+                <q-item
+                    v-for="(item, i) in history"
+                    :key="i"
+                    clickable
+                    @click="copyData(item.result)"
+                >
+                    <q-item-section>
+                        <q-item-label caption>{{ item.expression }}</q-item-label>
+                        <q-item-label>= {{ item.result }}</q-item-label>
+                    </q-item-section>
+                </q-item>
+            </q-list>
+        </div>
     </q-page>
 </template>
 
@@ -321,17 +360,23 @@ export default {
         return {
             preStack: "0",
             stack: [],
+            history: [],
         }
     },
     mounted() {
         this.preStack = this.$q.localStorage.getItem("preStack") ?? "0"
         this.stack = this.$q.localStorage.getItem("stack") ?? []
+        this.history = this.$q.localStorage.getItem("history") ?? []
         window.addEventListener("keydown", this.handleKeydown)
     },
     beforeDestroy() {
         window.removeEventListener("keydown", this.handleKeydown)
     },
     computed: {
+        showHistory() {
+            return this.$store.getters["config/getShowHistory"]
+        },
+
         digit1() {
             return this.preStack || (this.stack[0] ?? "")
         },
@@ -357,6 +402,9 @@ export default {
         },
         stack() {
             this.$q.localStorage.set("stack", this.stack)
+        },
+        history() {
+            this.$q.localStorage.set("history", this.history)
         },
     },
     methods: {
@@ -402,7 +450,14 @@ export default {
         },
 
         clearMemory() {
+            // O histórico não faz parte da pilha: é preservado
+            const history = this.history
             Object.assign(this.$data, this.$options.data())
+            this.history = history
+        },
+
+        clearHistory() {
+            this.history = []
         },
 
         copyData(value) {
@@ -469,7 +524,14 @@ export default {
             //console.log(secondLast, op, last)
 
             try {
-                this.stack.unshift(eval(`${secondLast} ${op} ${last}`))
+                const result = eval(`${secondLast} ${op} ${last}`)
+
+                this.stack.unshift(result)
+                this.history.unshift({
+                    expression: `${secondLast} ${op === "**" ? "^" : op} ${last}`,
+                    result,
+                })
+                this.history.splice(100)
             } catch (e) {
                 this.stack.unshift(secondLast)
                 this.stack.unshift(last)

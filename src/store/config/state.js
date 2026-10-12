@@ -1,6 +1,7 @@
 export default function () {
     return {
         colors: [],
-        direction: "Horizontal"
+        direction: "Horizontal",
+        showHistory: true
     }
 }

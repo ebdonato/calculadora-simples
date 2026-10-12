@@ -6,6 +6,10 @@ export function getDirection(state) {
     return state.direction
 }
 
+export function getShowHistory(state) {
+    return state.showHistory
+}
+
 export function getBackgroundStyle(state) {
     const colorsString = (colorsArr) => {
         return [...colorsArr].join(",")
