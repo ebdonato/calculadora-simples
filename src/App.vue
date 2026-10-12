@@ -21,6 +21,10 @@ export default {
             "config/setDirection",
             this.$q.localStorage.getItem("gradientDirection") ?? "Vertical"
         )
+        this.$store.commit(
+            "config/setShowHistory",
+            this.$q.localStorage.getItem("showHistory") ?? true
+        )
     },
 }
 </script>

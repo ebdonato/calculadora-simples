@@ -10,6 +10,11 @@ export function setColors(state, colors) {
     setBrand('accent', colors[2] ?? lighten(colors[1], -20))
 }
 
+export function setShowHistory(state, show) {
+    state.showHistory = !!show
+    LocalStorage.set("showHistory", state.showHistory)
+}
+
 export function setDirection(state, direction) {
     state.direction = direction
     LocalStorage.set("gradientDirection", direction)

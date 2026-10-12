@@ -74,6 +74,13 @@
                     @input="changeDirection"
                 />
 
+                <q-toggle
+                    :value="getShowHistory"
+                    label="Histórico (H)"
+                    class="full-width"
+                    @input="setShowHistory"
+                />
+
                 <q-btn
                     outline
                     no-caps
@@ -164,9 +171,33 @@ export default {
         }
     },
     computed: {
-        ...mapGetters("config", ["getBackgroundStyle", "getColors"]),
+        ...mapGetters("config", [
+            "getBackgroundStyle",
+            "getColors",
+            "getShowHistory",
+        ]),
     },
     methods: {
+        setShowHistory(value) {
+            this.$store.commit("config/setShowHistory", value)
+        },
+        handleKeydown(event) {
+            if (event.ctrlKey || event.metaKey || event.altKey) return
+
+            const target = event.target
+            if (
+                target &&
+                (target.isContentEditable ||
+                    ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName))
+            ) {
+                return
+            }
+
+            if (event.key === "h" || event.key === "H") {
+                this.setShowHistory(!this.getShowHistory)
+                event.preventDefault()
+            }
+        },
         changeThemeMode() {
             this.$q.dark.set(this.themeChoice == "Claro")
             this.$q.localStorage.set("darkTheme", this.$q.dark.isActive)
@@ -200,7 +231,11 @@ export default {
             }, 1000)
         },
     },
+    beforeDestroy() {
+        window.removeEventListener("keydown", this.handleKeydown)
+    },
     mounted() {
+        window.addEventListener("keydown", this.handleKeydown)
         this.themeChoice = this.$q.dark.isActive ? "Claro" : "Escuro"
         this.gradientDirection = this.$store.getters["config/getDirection"]
     },
