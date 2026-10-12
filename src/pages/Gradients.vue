@@ -30,7 +30,7 @@
 
 <script>
 import defaultGradient from "assets/defaultGradient"
-import axios from "axios"
+import uiGradients from "assets/uiGradients"
 
 export default {
     name: "PageGradients",
@@ -129,27 +129,7 @@ export default {
             colors: ["#FFEE00", "FFFF00"],
         }
 
-        this.gradients = this.$q.localStorage.getItem("uiGradients") ?? [
-            gradient,
-            ufv2001,
-        ]
-
-        axios
-            .get("https://uigradients.com/gradients.json")
-            .then((response) => {
-                this.gradients = [...response.data]
-                this.gradients.unshift(ufv2001)
-                this.gradients.unshift(gradient)
-
-                this.$q.localStorage.set("uiGradients", [...this.gradients])
-            })
-            .catch((e) => {
-                console.error(e)
-                this.$q.notify({
-                    message: "Algo deu errado",
-                    color: "negative",
-                })
-            })
+        this.gradients = [gradient, ufv2001, ...uiGradients]
     },
 }
 </script>
