@@ -4,6 +4,21 @@ Uma calculadora super simples, estilo R\$1,99, implementada com Framework Quasar
 
 **Não funcionar ainda, apenas leiaute.**
 
+## Atalhos de teclado
+
+A calculadora também pode ser usada pelo teclado:
+
+| Tecla                    | Ação                                       |
+| ------------------------ | ------------------------------------------ |
+| `0`–`9`                  | Digita o número                            |
+| `.` ou `,`               | Separador decimal                          |
+| `Enter`                  | Confirmar entrada                          |
+| `+` `-` `*` `/`          | Adição, subtração, multiplicação e divisão |
+| `^`                      | Potência (x^y)                             |
+| `Backspace`              | Remover último dígito / número da pilha    |
+| `S`                      | Inverter os dois últimos números da pilha  |
+| `Delete` ou `Esc`        | Limpar toda a pilha                        |
+
 ## Install the dependencies
 
 ```bash
