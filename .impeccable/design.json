@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-26T00:00:00.000Z",
+  "title": "Design System: Calculadora Super Simples",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Deep Petrol Teal",
+        "canonical": "#0c7489",
+        "tonalRamp": [
+          "oklch(15% 0.036 217)",
+          "oklch(26% 0.065 217)",
+          "oklch(38% 0.088 217)",
+          "oklch(49% 0.101 217)",
+          "oklch(61% 0.088 217)",
+          "oklch(72% 0.077 217)",
+          "oklch(84% 0.056 217)",
+          "oklch(95% 0.031 217)"
+        ]
+      },
+      "secondary": {
+        "role": "secondary",
+        "displayName": "Bright Lagoon",
+        "canonical": "#119da4",
+        "tonalRamp": [
+          "oklch(15% 0.042 201)",
+          "oklch(26% 0.077 201)",
+          "oklch(38% 0.104 201)",
+          "oklch(49% 0.119 201)",
+          "oklch(61% 0.119 201)",
+          "oklch(72% 0.090 201)",
+          "oklch(84% 0.067 201)",
+          "oklch(95% 0.037 201)"
+        ]
+      },
+      "accent": {
+        "role": "tertiary",
+        "displayName": "Shadowed Pine",
+        "canonical": "#13505b",
+        "tonalRamp": [
+          "oklch(15% 0.025 212)",
+          "oklch(26% 0.045 212)",
+          "oklch(38% 0.061 212)",
+          "oklch(49% 0.061 212)",
+          "oklch(61% 0.061 212)",
+          "oklch(72% 0.053 212)",
+          "oklch(84% 0.039 212)",
+          "oklch(95% 0.022 212)"
+        ]
+      },
+      "surface-dark": {
+        "role": "neutral",
+        "displayName": "True Black",
+        "canonical": "#000000",
+        "tonalRamp": [
+          "oklch(15% 0.000 0)",
+          "oklch(26% 0.000 0)",
+          "oklch(38% 0.000 0)",
+          "oklch(49% 0.000 0)",
+          "oklch(61% 0.000 0)",
+          "oklch(72% 0.000 0)",
+          "oklch(84% 0.000 0)",
+          "oklch(95% 0.000 0)"
+        ]
+      },
+      "positive": {
+        "role": "status",
+        "displayName": "Success Green",
+        "canonical": "#21BA45",
+        "tonalRamp": [
+          "oklch(15% 0.080 146)",
+          "oklch(26% 0.145 146)",
+          "oklch(38% 0.197 146)",
+          "oklch(49% 0.226 146)",
+          "oklch(61% 0.226 146)",
+          "oklch(72% 0.171 146)",
+          "oklch(84% 0.126 146)",
+          "oklch(95% 0.070 146)"
+        ]
+      },
+      "negative": {
+        "role": "status",
+        "displayName": "Alert Red",
+        "canonical": "#C10015",
+        "tonalRamp": [
+          "oklch(15% 0.084 27)",
+          "oklch(26% 0.151 27)",
+          "oklch(38% 0.205 27)",
+          "oklch(49% 0.235 27)",
+          "oklch(61% 0.204 27)",
+          "oklch(72% 0.178 27)",
+          "oklch(84% 0.131 27)",
+          "oklch(95% 0.073 27)"
+        ]
+      },
+      "info": {
+        "role": "status",
+        "displayName": "Info Cyan",
+        "canonical": "#31CCEC",
+        "tonalRamp": [
+          "oklch(15% 0.052 216)",
+          "oklch(26% 0.094 216)",
+          "oklch(38% 0.127 216)",
+          "oklch(49% 0.146 216)",
+          "oklch(61% 0.146 216)",
+          "oklch(72% 0.127 216)",
+          "oklch(84% 0.082 216)",
+          "oklch(95% 0.045 216)"
+        ]
+      },
+      "warning": {
+        "role": "status",
+        "displayName": "Warning Amber",
+        "canonical": "#F2C037",
+        "tonalRamp": [
+          "oklch(15% 0.062 87)",
+          "oklch(26% 0.112 87)",
+          "oklch(38% 0.152 87)",
+          "oklch(49% 0.175 87)",
+          "oklch(61% 0.175 87)",
+          "oklch(72% 0.152 87)",
+          "oklch(84% 0.098 87)",
+          "oklch(95% 0.054 87)"
+        ]
+      },
+      "text-on-dark": {
+        "role": "neutral",
+        "displayName": "Theme Text (dark mode)",
+        "canonical": "#ffffff"
+      },
+      "text-on-light": {
+        "role": "neutral",
+        "displayName": "Theme Text (light mode)",
+        "canonical": "#000000"
+      }
+    },
+    "typographyMeta": {
+      "body": {
+        "displayName": "Body",
+        "purpose": "Default everywhere: list items, drawer labels, dialogs, menu captions."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Panel headings like the Histórico header (Quasar text-subtitle1)."
+      },
+      "key-label": {
+        "displayName": "Key Label",
+        "purpose": "Calculator key labels and stack values — the loudest text; uppercased by the button component."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "History expression lines and the secondary row of drawer links."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "hover-transition",
+        "value": ".3s cubic-bezier(.25, .8, .5, 1)",
+        "purpose": "Quasar generic hover/press transition on all buttons and interactive surfaces."
+      },
+      {
+        "name": "field-transition",
+        "value": ".36s cubic-bezier(.4, 0, .2, 1)",
+        "purpose": "Outlined field label float and border-color shifts in the drawer selects."
+      },
+      {
+        "name": "page-fade",
+        "value": "1s ease",
+        "purpose": "Router-view enter/leave (animate.css fadeIn / fadeOut, the only enabled animations)."
+      },
+      {
+        "name": "tooltip-delay",
+        "value": "1000ms",
+        "purpose": "Every key tooltip delay, with a [0, 10] offset."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "history-stack",
+        "value": "719px",
+        "purpose": "Below this the 220px history rail detaches and moves under the keypad at full width (max 400px, 300px tall)."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Calculator Key",
+      "kind": "button",
+      "refersTo": "key-primary",
+      "description": "The primary pill key: transparent outline, uppercase label, 4-per-row grid cell.",
+      "html": "<button class=\"ds-key\">7</button>",
+      "css": ".ds-key { display: inline-flex; align-items: center; justify-content: center; flex: 1 1 0; min-width: 0; min-height: 2.572em; padding: 4px 16px; background: transparent; color: #fff; border: 1px solid currentColor; border-radius: 28px; font: 500 1.25rem/1.715 Roboto, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif; text-transform: uppercase; cursor: pointer; transition: background-color .3s cubic-bezier(.25,.8,.5,1); } .ds-key:hover { background-color: rgba(255,255,255,.12); } .ds-key:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; } .ds-key:active { background-color: rgba(255,255,255,.2); }"
+    },
+    {
+      "name": "Stack Display Row",
+      "kind": "custom",
+      "refersTo": "key-primary",
+      "description": "Signature component: the read-only, copy-on-click stack line with a depth icon left and value right.",
+      "html": "<button class=\"ds-stack-row\" aria-label=\"Pilha Linha 4\"><svg class=\"ds-stack-row__icon\" viewBox=\"0 0 24 24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M6 4h4v16H6V4zm7 0h5v4h-5V4zm0 6h5v4h-5v-4zm0 6h5v4h-5v-4z\"/></svg><span class=\"ds-stack-row__value\">123.45</span></button>",
+      "css": ".ds-stack-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; min-height: 2.572em; padding: 4px 16px; background: transparent; color: #fff; border: 1px solid currentColor; border-radius: 28px; font: 500 1.25rem/1.715 Roboto, -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif; cursor: pointer; transition: background-color .3s cubic-bezier(.25,.8,.5,1); } .ds-stack-row:hover { background-color: rgba(255,255,255,.12); } .ds-stack-row:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; } .ds-stack-row__icon { flex: 0 0 auto; width: 1.715em; height: 1.715em; } .ds-stack-row__value { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }"
+    },
+    {
+      "name": "Header Icon Button",
+      "kind": "button",
+      "refersTo": "header-icon",
+      "description": "Flat round icon button in the transparent header; color flips with the text theme.",
+      "html": "<button class=\"ds-header-icon\" aria-label=\"Menu\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"currentColor\" aria-hidden=\"true\"><path d=\"M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z\"/></svg></button>",
+      "css": ".ds-header-icon { display: inline-flex; align-items: center; justify-content: center; padding: 8px; background: transparent; color: #fff; border: 0; border-radius: 50%; cursor: pointer; transition: background-color .3s cubic-bezier(.25,.8,.5,1); } .ds-header-icon:hover { background-color: rgba(255,255,255,.12); } .ds-header-icon:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }"
+    },
+    {
+      "name": "History List Item",
+      "kind": "card",
+      "refersTo": null,
+      "description": "Two-line result row: caption expression over body-weight result, hairline separator, click to copy.",
+      "html": "<div class=\"ds-history-item\"><span class=\"ds-history-item__expr\" title=\"12 + 34\">12 + 34</span><span class=\"ds-history-item__result\">= 46</span></div>",
+      "css": ".ds-history-item { display: flex; flex-direction: column; gap: 2px; padding: 8px 16px; min-height: 48px; justify-content: center; color: #fff; border-bottom: 1px solid rgba(128,128,128,.35); cursor: pointer; transition: background-color .3s cubic-bezier(.25,.8,.5,1); } .ds-history-item:hover { background-color: rgba(255,255,255,.08); } .ds-history-item__expr { font: 400 .75rem/1.375rem Roboto, sans-serif; color: rgba(255,255,255,.7); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .ds-history-item__result { font: 400 .875rem/1.5 Roboto, sans-serif; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }"
+    },
+    {
+      "name": "Gradient Swatch Button",
+      "kind": "button",
+      "refersTo": null,
+      "description": "Gradients-page chip: full-bleed gradient fill whose label color is computed from the first stop's luminance.",
+      "html": "<button class=\"ds-swatch\">1 - Original</button>",
+      "css": ".ds-swatch { min-width: 100px; padding: 8px 16px; border: 0; border-radius: 4px; background: linear-gradient(to right, #13505b, #0c7489, #119da4); color: #fff; font: 400 .875rem/1.5 Roboto, sans-serif; text-transform: none; cursor: pointer; transition: filter .3s cubic-bezier(.25,.8,.5,1); } .ds-swatch:hover { filter: brightness(1.08); } .ds-swatch:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }"
+    },
+    {
+      "name": "Outlined Select",
+      "kind": "input",
+      "refersTo": "select-outline",
+      "description": "Drawer settings field: transparent outlined control with floating label (Cor do Texto, Gradiente).",
+      "html": "<label class=\"ds-select\"><span class=\"ds-select__label\">Gradiente</span><span class=\"ds-select__value\">Vertical</span></label>",
+      "css": ".ds-select { position: relative; display: flex; flex-direction: column; justify-content: center; min-height: 40px; padding: 8px 12px; background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.62); border-radius: 4px; cursor: pointer; transition: border-color .36s cubic-bezier(.4,0,.2,1); } .ds-select:hover, .ds-select:focus-within { border-color: #fff; } .ds-select__label { position: absolute; top: -8px; left: 8px; padding: 0 4px; background: transparent; font: 400 .75rem/1.375rem Roboto, sans-serif; color: rgba(255,255,255,.7); } .ds-select__value { font: 400 .875rem/1.5 Roboto, sans-serif; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Honest Instrument",
+    "overview": "This is a measuring tool, not a showpiece. The calculator states its whole working state — a four-line visible stack — as large, plainly-labelled keys, and asks nothing else of the user. Every default favors legibility over polish: flat surfaces, one border weight, one type family, a single 400px column centered on the page. The personality arrives through a deliberate wink rather than through chrome: the entire canvas is a customizable gradient (the \"estilo R$1,99\" self-awareness of the README made visual), an avatar in the header opens an auto-closing \"Desenvolvido por\" dialog, and the palette is a teal family that reads as instrument-panel rather than brand-campaign.\n\nDensity is high and rhythm is mechanical: four keys per row, identical 8px gutters, no decorative spacing. The system is theme-aware — dark by default, with a user-facing \"Cor do Texto\" toggle — and the gradient background is the one surface that changes character, so foreground elements stay strictly neutral outline shapes that work over any color world the user picks. Confirmed anti-reference: corporate SaaS chrome (cards, elevated panels, gradient buttons) and skeuomorphic calculator textures (bevels, LCD panels, plastic keys).",
+    "keyCharacteristics": [
+      "Flat outline vocabulary: transparent fills, 1px `currentColor` borders, no shadows anywhere",
+      "Fully-rounded pill keys (28px radius) in a strict 4-column grid",
+      "A single centered 400px instrument column with an optional 220px history rail",
+      "Teal brand family (Petrol Teal / Bright Lagoon / Shadowed Pine) as the default gradient world",
+      "Roboto throughout; uppercase, medium-weight key labels",
+      "The gradient canvas is user-owned — foreground UI must stay legible over any of it"
+    ],
+    "rules": [
+      {
+        "name": "The Gradient-Owner Rule",
+        "body": "The background is the user's, not the system's. Foreground elements never borrow gradient colors for fills or text; they stay neutral outlines so they remain legible over any swatch.",
+        "section": "colors"
+      },
+      {
+        "name": "The One-World Rule",
+        "body": "Only one gradient is active at a time, and the default teal family is the reference world. New surfaces are designed against the default gradient first.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Family Rule",
+        "body": "Roboto only. Introducing a second family — especially a mono \"calculator font\" — is off-brand for the honest instrument.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "No `box-shadow` is ever added to a resting element. If something needs to feel above the canvas, it gets a border or the scrim, never a shadow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** keep every resting surface flat and outlined: transparent fill + 1px `currentColor` border (pill radius 28px for labelled controls).",
+      "**Do** design against the default teal gradient first — the foreground must stay legible over Shadowed Pine → Deep Petrol Teal → Bright Lagoon and over any user swatch.",
+      "**Do** keep the instrument column at 400px max with 8px gutters and the 4-column key grid; the 719px breakpoint is where the history rail moves below the keypad.",
+      "**Do** keep text theme binary (white on dark, black on light) and let Quasar's caption grey be the only secondary tone.",
+      "**Do** put a 1000ms tooltip and an `aria-label` on every icon-only control, matching the incumbent coverage."
+    ],
+    "donts": [
+      "**Don't** add box-shadows, elevation cards, or beveled/skeuomorphic key treatments — the system is flat by decree.",
+      "**Don't** add a second typeface or a \"calculator-style\" mono/display font.",
+      "**Don't** fill foreground elements with gradient colors or brand teal; teal lives in the canvas, outlines live in the UI.",
+      "**Don't** invent radii beyond the set — 28px pills, 50% rounds, 4px fields — or spacing steps outside 4px / 8px / 16px.",
+      "**Don't** spread the manifest's legacy navy (`#1a2a6c`) into UI elements — it is packaging metadata, not part of the palette."
+    ]
+  }
+}
